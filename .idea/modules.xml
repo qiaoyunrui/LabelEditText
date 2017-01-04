@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/LabelEditText.iml" filepath="$PROJECT_DIR$/LabelEditText.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LabelEditTextView/LabelEditTextView.iml" filepath="$PROJECT_DIR$/LabelEditTextView/LabelEditTextView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sample/sample.iml" filepath="$PROJECT_DIR$/sample/sample.iml" />
+    </modules>
+  </component>
+</project>
