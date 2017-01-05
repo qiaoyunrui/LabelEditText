@@ -11,6 +11,7 @@
     tools:context="com.juhezi.labeledittext.MainActivity">
 
     <com.juhezi.lableedittextview.view.LabelEditText
+        android:id="@+id/let_test"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </RelativeLayout>

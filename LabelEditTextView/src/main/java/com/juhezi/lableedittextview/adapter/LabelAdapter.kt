@@ -15,11 +15,23 @@ class LabelAdapter : RecyclerView.Adapter<LabelAdapter.LabelHolder>() {
 
     var labels: ArrayList<String> = ArrayList()
 
+    var max_label_count: Int = 10
+        set(value) {
+            if (value <= 0) {
+                field = 10
+            } else {
+                field = value
+            }
+        }
+
     override fun onBindViewHolder(holder: LabelHolder?, position: Int) {
         holder?.mTvLabel?.text = labels[position]
+        holder?.itemView?.setOnClickListener {
+            itemClickListener?.invoke(labels[position])
+        }
     }
 
-    override fun getItemCount(): Int = labels.size
+    override fun getItemCount(): Int = if (labels.size > max_label_count) max_label_count else labels.size
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): LabelHolder {
         var item_view = LayoutInflater.from(parent!!.context)!!
@@ -36,5 +48,7 @@ class LabelAdapter : RecyclerView.Adapter<LabelAdapter.LabelHolder>() {
         }
 
     }
+
+    var itemClickListener: ((label: String) -> Unit)? = null
 
 }
