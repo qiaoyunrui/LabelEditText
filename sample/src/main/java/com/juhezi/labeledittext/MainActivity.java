@@ -18,9 +18,8 @@ public class MainActivity extends AppCompatActivity {
         mLetTest = (LabelEditText) findViewById(R.id.let_test);
         ArrayList<String> labels = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
-            labels.add(i + "");
+            labels.add("张全蛋" + i + "");
         }
         mLetTest.setLabels(labels);
-        mLetTest.setMaxLabelCount(10);
     }
 }

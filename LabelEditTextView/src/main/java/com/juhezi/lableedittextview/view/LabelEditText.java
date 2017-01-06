@@ -1,9 +1,14 @@
 package com.juhezi.lableedittextview.view;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -26,6 +31,7 @@ public class LabelEditText extends LinearLayout {
     private RecyclerView mRecyclerView;
 
     private LabelAdapter mAdapter;
+    private int mLabelMaxCount = 10;
 
     public LabelEditText(Context context) {
         super(context);
@@ -35,6 +41,12 @@ public class LabelEditText extends LinearLayout {
     public LabelEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs,
+                R.styleable.LabelEditText);
+        mLabelMaxCount = typedArray
+                .getInt(R.styleable.LabelEditText_item_max_count,
+                        10);
+        typedArray.recycle();
     }
 
     /**
@@ -55,9 +67,11 @@ public class LabelEditText extends LinearLayout {
             @Override
             public Unit invoke(String s) {
                 mEditText.setText(mEditText.getText() + " " + s);
+                mEditText.setSelection(mEditText.getText().length());
                 return null;
             }
         });
+        mAdapter.setMax_label_count(mLabelMaxCount);
     }
 
     /**
@@ -74,4 +88,12 @@ public class LabelEditText extends LinearLayout {
         mAdapter.setMax_label_count(maxLabelCount);
     }
 
+    /**
+     * 允许设置自己的Adapter
+     */
+    public void setAdapter(RecyclerView.Adapter adapter) {
+        if (adapter != null) {
+            mRecyclerView.setAdapter(adapter);
+        }
+    }
 }

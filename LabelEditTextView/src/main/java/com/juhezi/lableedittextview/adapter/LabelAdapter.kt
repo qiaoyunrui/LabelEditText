@@ -1,6 +1,9 @@
 package com.juhezi.lableedittextview.adapter
 
+import android.graphics.drawable.GradientDrawable
+import android.graphics.drawable.ShapeDrawable
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,6 +26,8 @@ class LabelAdapter : RecyclerView.Adapter<LabelAdapter.LabelHolder>() {
                 field = value
             }
         }
+
+    private var TAG = "LabelAdapter"
 
     override fun onBindViewHolder(holder: LabelHolder?, position: Int) {
         holder?.mTvLabel?.text = labels[position]
